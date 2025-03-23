@@ -15,16 +15,3 @@ abstract class Todo with _$Todo {
 
   factory Todo.fromJson(Map<String, dynamic> json) => _$TodoFromJson(json);
 }
-
-
-
-
-
-// class Todo {
-//   final int id;
-//   final String title;
-//   final String content;
-//   final DateTime? createdAt;
-  
-//   Todo({required this.id, required this.title, required this.content, this.createdAt});
-// }

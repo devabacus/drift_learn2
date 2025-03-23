@@ -16,7 +16,6 @@ class AppDatabase extends _$AppDatabase {
   static QueryExecutor _openConnection() {
     return driftDatabase(
       name: 'my_database',
-      native: const DriftNativeOptions(databaseDirectory: getApplicationSupportDirectory),
     );
   }
 }
