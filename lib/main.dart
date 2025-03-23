@@ -6,6 +6,7 @@ import 'package:talker_riverpod_logger/talker_riverpod_logger.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
   ProviderScope(
     observers: [
