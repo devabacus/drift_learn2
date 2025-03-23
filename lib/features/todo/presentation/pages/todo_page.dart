@@ -1,5 +1,7 @@
 import 'package:drift_learn2/core/database/database.dart';
 import 'package:drift_learn2/core/database/database_provider.dart';
+import 'package:drift_learn2/features/todo/data/repositories/todo_provider.dart';
+import 'package:drift_learn2/features/todo/data/repositories/todo_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import '../providers/todo_navigation_provider.dart';
@@ -12,7 +14,6 @@ class TodoPage extends ConsumerStatefulWidget {
 }
 
 class _TodoPageState extends ConsumerState<TodoPage> {
-  late AppDatabase database;
 
   @override
   void initState() {
@@ -20,22 +21,19 @@ class _TodoPageState extends ConsumerState<TodoPage> {
   }     
 
   Future<void> insertInDB() async {
-    await database
-        .into(database.todoItems)
-        .insert(
-          TodoItemsCompanion.insert(title: 'запись1', content: 'описание 1'),
-        );
+     final todoRepo = ref.read(todoRepositoryProvider);
+      todoRepo.addTodo('новый заголовок', 'это описание нового заголовка');
   }
 
   Future<void> readFromDB() async {
-    final allItems = await database.select(database.todoItems).get();
-    
-    print('items in database: $allItems');
+     final todoRepo = ref.read(todoRepositoryProvider);
+     final todos = await todoRepo.getAll();
+     print('items in database: $todos');
   }
 
   @override
   Widget build(BuildContext context) {
-    database = ref.read(appDatabaseProvider);
+    
 
     return Scaffold(
       body: Center(

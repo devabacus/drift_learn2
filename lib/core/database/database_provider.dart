@@ -1,4 +1,4 @@
-import 'package:drift_learn2/core/database/database.dart';
+import './database.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
