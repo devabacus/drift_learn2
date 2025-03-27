@@ -30,7 +30,7 @@ class TodoRepository implements ITodoRepository {
   
   @override
   Future<int> add(Todo item) {
-    return _db.into(_db.todoItems).insert(
+    return _db.todoItems.insertOne(
       TodoItemsCompanion.insert(
         title: item.title,
         content: item.content,
